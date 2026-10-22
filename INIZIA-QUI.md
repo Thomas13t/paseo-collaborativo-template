@@ -16,11 +16,12 @@ Puoi dire al tuo agente:
 6. Esegui `node scripts/collab.mjs setup --register`. La procedura controlla l’ambiente, scrive soltanto `.paseo-local.json` (ignorato da Git) e registra progetto/workspace nel Paseo locale. Non avvia un agente e non invia inviti.
 7. Esegui `node scripts/collab.mjs context` per leggere attività e proposte aperte. Aggiorna i riferimenti con `git fetch origin`; se ci sono modifiche locali non fare pull o rebase alla cieca.
 8. Verifica che il progetto sia visibile in Paseo e che GitHub riporti almeno l’accesso in scrittura necessario al lavoro. Non spedire commit di prova al branch principale.
-9. Riporta al collaboratore repository, cartella, stato dell’accesso e dei controlli, eventuali requisiti mancanti. Aspetta il primo incarico.
+9. Leggi `invitationPlugin` nell’output del setup e mostra sempre il messaggio all’utente. Per avere il pulsante Invita è necessario installare il plugin su questo Paseo una volta per computer/daemon. Se manca o non è attivo, segui `docs/plugin.md` dopo il consenso; non dichiarare il pulsante pronto e non reinstallarlo se è già attivo.
+10. Riporta al collaboratore repository, cartella, stato dell’accesso e dei controlli, eventuali requisiti mancanti. Aspetta il primo incarico.
 
-## Pulsante collaboratori, facoltativo
+## Il pulsante Invita richiede il plugin
 
-Se richiesto dall’utente, segui [docs/plugin.md](docs/plugin.md). La normale partecipazione non richiede di abilitare plugin.
+**Il clone/pull di questo progetto non installa il plugin in Paseo.** Su ogni computer/daemon, la prima volta devi autorizzarlo e installarlo seguendo [docs/plugin.md](docs/plugin.md). L’agente deve segnalartelo anche se il progetto è stato registrato correttamente. Una volta attivo, vale per tutti i progetti collaborativi su quel daemon. La normale partecipazione tramite GitHub funziona anche senza il pulsante.
 
 ## Che cosa condividiamo
 

@@ -1,6 +1,14 @@
 # Pulsante “Invita al progetto”
 
-Il plugin aggiunge un’icona **UserPlus** con il comando **Invita al progetto** nella sidebar. Nel menu comandi di un workspace è disponibile **Invita una persona al progetto**, che apre un pannello con il repository ricavato da origin. La versione alfa supporta Paseo 0.12.x; non modifica i pulsanti nativi dell’app.
+Il plugin aggiunge **Invita**, con icona UserPlus, direttamente nella testata di ogni workspace che contiene il setup collaborativo (`INIZIA-QUI.md` e `scripts/collab.mjs`). Il pannello riconosce il progetto e legge il repository GitHub da `origin`: non c’è un campo proprietario/repository da compilare. Su finestre strette il pulsante è nel menu del workspace (`···`). Il pannello è disponibile anche nell’Explorer e dal menu comandi del workspace.
+
+La versione alfa supporta Paseo 0.12.x. La voce globale nella sidebar è stata rimossa per evitare inviti scollegati dal progetto corrente.
+
+## Prima apertura: il promemoria
+
+Il clone o il pull non installa il plugin e non produce da solo una notifica push di Paseo. `setup --register`, `setup --check-only` e `doctor` controllano in sola lettura il catalogo locale: il campo `invitationPlugin` indica `ready`, `not-installed`, `needs-attention` o `unknown`, con messaggio e guida. L’agente deve mostrare il messaggio all’utente; è visibile anche nell’output dello script di preparazione in Paseo.
+
+Per vedere **Invita** è necessario installare il plugin una sola volta per ogni computer/daemon. Anche ciascun collaboratore deve farlo sul proprio Paseo. Non confondere la registrazione del progetto con l’installazione del plugin.
 
 ## Attivazione locale
 
@@ -18,7 +26,7 @@ I plugin appartengono al daemon: basta una sola installazione per usare il panne
 
 ## Uso
 
-1. Apri il pannello dal workspace, oppure la voce nella sidebar e inserisci `proprietario/progetto`.
+1. Apri il workspace del progetto e premi **Invita** in alto. Progetto e repository sono già riconosciuti; devi inserire soltanto la persona.
 2. Inserisci lo username GitHub o un’email pubblica. La ricerca per email contatta GitHub e riesce solo se l’indirizzo è pubblicamente associabile a un unico account.
 3. Premi **Prepara invito**. Verifica repository, identità del destinatario, account mittente e accesso in scrittura.
 4. Premi **Invia invito a @username**. Solo questo passaggio modifica l’accesso. GitHub genera l’invito/notifica; l’email effettiva dipende dalle impostazioni del destinatario.
