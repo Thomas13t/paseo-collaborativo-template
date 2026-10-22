@@ -27,7 +27,7 @@ I plugin appartengono al daemon: basta una sola installazione per usare il panne
 ## Uso
 
 1. Apri il workspace del progetto e premi **Invita** in alto. Progetto e repository sono già riconosciuti; devi inserire soltanto la persona.
-2. Inserisci lo username GitHub o un’email pubblica. La ricerca per email contatta GitHub e riesce solo se l’indirizzo è pubblicamente associabile a un unico account.
+2. Inserisci lo username GitHub (anche con @), il link diretto al profilo oppure un’email pubblica. La ricerca per email contatta GitHub e riesce solo se l’indirizzo è pubblicamente associabile a un unico account.
 3. Premi **Prepara invito**. Verifica repository, identità del destinatario, account mittente e accesso in scrittura.
 4. Premi **Invia invito a @username**. Solo questo passaggio modifica l’accesso. GitHub genera l’invito/notifica; l’email effettiva dipende dalle impostazioni del destinatario.
 5. Dopo l’accettazione il collaboratore apre README e INIZIA-QUI.md. Il pannello mostra anche la frase pronta con il link corretto alla procedura.

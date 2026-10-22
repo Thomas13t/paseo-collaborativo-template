@@ -4,6 +4,11 @@ import { useRpc, useWorkspace, type PluginScreenProps, type PluginWorkspacePanel
 import { useQuery } from '@tanstack/react-query';
 import { prepareInvitation, sendInvitation, workspaceInvitationContext } from '../shared/invitations';
 
+function readableError(error: unknown) {
+  const message = error instanceof Error ? error.message : String(error);
+  return message.replace(/^Request failed:\s*/, '').replace(/\s+requestType=.*$/s, '');
+}
+
 type Preview = { ticket: string; repo: string; login: string; name: string; actor: string; permission: string; onboardingUrl: string; resolvedFromEmail: boolean };
 type PluginTheme = PluginScreenProps['theme'];
 function InviteForm({ theme, compact, workspaceId, workspaceName }: { theme: PluginTheme; compact: boolean; workspaceId?: string; workspaceName?: string }) {
@@ -24,7 +29,7 @@ function InviteForm({ theme, compact, workspaceId, workspaceName }: { theme: Plu
     if (!workspaceId || !context.data?.eligible) return;
     setBusy(true); reset();
     try { setPreview(await prepare({ workspaceId, recipient: recipient.trim() })); }
-    catch (e) { setError(e instanceof Error ? e.message : String(e)); }
+    catch (e) { setError(readableError(e)); }
     finally { setBusy(false); }
   }
   async function sendClick() {
@@ -32,7 +37,7 @@ function InviteForm({ theme, compact, workspaceId, workspaceName }: { theme: Plu
     setBusy(true); setError('');
     const ticket = preview.ticket; setPreview(null);
     try { const result = await send({ ticket }); setMessage(result.message); setOnboarding(result.onboardingUrl); }
-    catch (e) { setError(e instanceof Error ? e.message : String(e)); }
+    catch (e) { setError(readableError(e)); }
     finally { setBusy(false); }
   }
   return <ScrollView contentContainerStyle={{ padding: compact ? 16 : 28, gap: 16, backgroundColor: c.surface0, flexGrow: 1 }}>
@@ -43,8 +48,8 @@ function InviteForm({ theme, compact, workspaceId, workspaceName }: { theme: Plu
       <Text selectable style={{ color: c.foregroundMuted }}>{context.isPending ? 'Riconoscimento repository…' : context.data?.repo || context.data?.reason || context.error?.message || 'Apri Invita dal workspace del progetto.'}</Text>
     </View>
     <View style={{ gap: 6 }}>
-      <Text style={{ color: c.foreground }}>Email o nome utente GitHub</Text>
-      <TextInput accessibilityLabel="Email o nome utente GitHub" placeholder="max oppure max@esempio.it" placeholderTextColor={c.foregroundMuted} autoCapitalize="none" autoCorrect={false} editable={!busy} value={recipient} onChangeText={v => { setRecipient(v); reset(); }} style={fieldStyle} />
+      <Text style={{ color: c.foreground }}>Nome utente, link GitHub o email</Text>
+      <TextInput accessibilityLabel="Nome utente, link GitHub o email" placeholder="b1162 oppure https://github.com/b1162" placeholderTextColor={c.foregroundMuted} autoCapitalize="none" autoCorrect={false} editable={!busy} value={recipient} onChangeText={v => { setRecipient(v); reset(); }} style={fieldStyle} />
       <Text style={{ color: c.foregroundMuted }}>Se l’email non è pubblica su GitHub, usa il nome utente. Nessun invito parte durante la ricerca.</Text>
     </View>
     <Pressable accessibilityRole="button" accessibilityLabel="Prepara invito" disabled={busy || !recipient.trim() || !context.data?.eligible} onPress={prepareClick} style={{ padding: 14, borderRadius: 8, backgroundColor: c.accent, opacity: busy ? 0.5 : 1 }}>

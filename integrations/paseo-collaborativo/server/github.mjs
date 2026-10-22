@@ -58,8 +58,25 @@ export async function api(path, { method = 'GET', fields = {}, paginate = false 
   return output.trim() ? JSON.parse(output) : null;
 }
 
-export async function resolveRecipient(recipient, runner = run) {
+export function normalizeRecipient(recipient) {
+  if (typeof recipient !== 'string') throw new Error('Inserisci nome utente, link al profilo GitHub o email pubblica.');
   const value = recipient.trim();
+  if (/^(?:https?:\/\/|github\.com\/)/i.test(value)) {
+    let url;
+    try { url = new URL(/^github\.com\//i.test(value) ? `https://${value}` : value); }
+    catch { throw new Error('Link profilo non valido. Esempio: https://github.com/b1162'); }
+    const profile = /^\/([A-Za-z0-9-]+)\/?$/.exec(url.pathname);
+    if (url.protocol !== 'https:' || url.hostname !== 'github.com' || url.port || url.username || url.password || url.search || url.hash || !profile) {
+      throw new Error('Incolla il link diretto al profilo GitHub, ad esempio https://github.com/b1162, oppure solo b1162.');
+    }
+    return validateUsername(profile[1]);
+  }
+  if (/^@[A-Za-z0-9-]+$/.test(value)) return validateUsername(value.slice(1));
+  return value;
+}
+
+export async function resolveRecipient(recipient, runner = run) {
+  const value = normalizeRecipient(recipient);
   if (!value.includes('@')) {
     const login = validateUsername(value);
     const account = await api(`users/${login}`, {}, runner);
