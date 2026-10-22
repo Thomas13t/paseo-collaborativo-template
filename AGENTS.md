@@ -22,6 +22,7 @@ Queste istruzioni valgono per codice, documenti e ricerca. L’utente umano mant
 
 - Ogni persona usa il proprio login GitHub e i propri provider. Non copiare credenziali o configurazioni globali nel repository.
 - La preparazione locale è `node scripts/collab.mjs setup --register`; non cambia le preferenze globali degli agenti. Il setup dei worktree esegue solo i controlli.
+- Dopo setup/doctor, mostra sempre all’utente `invitationPlugin.message`: per il pulsante Invita il plugin va installato una volta su ogni computer/daemon. Il clone/pull non lo installa. Se manca segui `docs/plugin.md` con il consenso dell’utente; se già attivo evita reinstallazioni.
 - Il plugin è facoltativo. Abilitarlo richiede il consenso dell’utente sul relativo daemon: il codice non è sandboxato.
 - Non invitare persone, modificare accessi o inviare messaggi senza autorizzazione del destinatario e dell’azione da parte dell’utente. Nel pannello inviti il click finale dell’utente autorizza quell’invito specifico.
 - Preferisci modelli economici per attività ordinarie secondo le preferenze personali dell’utente; non inviare materiale riservato a provider esterni per ottenere un parere non richiesto.

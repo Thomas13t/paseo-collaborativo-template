@@ -4,6 +4,12 @@ Il plugin aggiunge **Invita**, con icona UserPlus, direttamente nella testata di
 
 La versione alfa supporta Paseo 0.12.x. La voce globale nella sidebar è stata rimossa per evitare inviti scollegati dal progetto corrente.
 
+## Prima apertura: il promemoria
+
+Il clone o il pull non installa il plugin e non produce da solo una notifica push di Paseo. `setup --register`, `setup --check-only` e `doctor` controllano in sola lettura il catalogo locale: il campo `invitationPlugin` indica `ready`, `not-installed`, `needs-attention` o `unknown`, con messaggio e guida. L’agente deve mostrare il messaggio all’utente; è visibile anche nell’output dello script di preparazione in Paseo.
+
+Per vedere **Invita** è necessario installare il plugin una sola volta per ogni computer/daemon. Anche ciascun collaboratore deve farlo sul proprio Paseo. Non confondere la registrazione del progetto con l’installazione del plugin.
+
 ## Attivazione locale
 
 Il plugin è codice locale non sandboxato: può leggere file, avviare processi e usare il login `gh` sul computer del daemon. La procedura non abilita i plugin automaticamente.

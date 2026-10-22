@@ -4,6 +4,14 @@ Una base per creare progetti condivisi: repository e conoscenza comuni, copia lo
 
 **Se sei stato invitato a questo progetto, parti da [INIZIA-QUI.md](INIZIA-QUI.md).**
 
+## Prima apertura in Paseo: controlla il plugin
+
+**Per avere il pulsante Invita, devi installare il plugin sul tuo Paseo. Serve una sola installazione per computer/daemon, anche se partecipi a più progetti.** Il clone o il pull del repository non installa né aggiorna il plugin.
+
+Esegui `node scripts/collab.mjs setup --register`: l’output `invitationPlugin` dice se il pulsante è pronto o mostra il promemoria di installazione. Il tuo agente deve riportartelo. È un avviso nel setup, non una notifica push nativa al semplice clone.
+
+Se manca, segui [la guida di installazione](docs/plugin.md). Dopo il consenso e l’abilitazione dei plugin, esegui `node scripts/collab.mjs plugin-install`. Se è già attivo, non reinstallarlo. Puoi lavorare sul repository anche senza il pulsante.
+
 ## Crea Sdrubale
 
 Al tuo agente in Paseo puoi dire:

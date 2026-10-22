@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
-import { doctor, setup, cloneAndSetup, createProject, configureGitHub, projectRepo, installPlugin } from '../lib/project.mjs';
+import { doctor, setup, cloneAndSetup, createProject, configureGitHub, projectRepo, installPlugin, invitationPluginStatus } from '../lib/project.mjs';
 import { run, prepareInvite, sendInvite } from '../integrations/paseo-collaborativo/server/github.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -22,7 +22,7 @@ try {
   let result;
   const repo = async () => values.repo || projectRepo(root);
   switch (command) {
-    case 'doctor': result = await doctor(root); break;
+    case 'doctor': result = { ...(await doctor(root)), invitationPlugin: await invitationPluginStatus() }; break;
     case 'setup': result = await setup(root, { registerProject: !!values.register, checkOnly: !!values['check-only'] }); break;
     case 'new':
       if (!values.repo || !values.dest) throw new Error('Usa new --repo proprietario/nome --dest /cartella/nuova.');

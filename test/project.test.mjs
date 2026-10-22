@@ -83,3 +83,35 @@ test('missing prerequisite makes setup fail without registering or writing local
   assert.equal(m.calls.some(c => c.includes('create')), false);
   await assert.rejects(access(join(root, '.paseo-local.json')));
 });
+
+test('setup reports missing invitation plugin without installing or blocking collaboration', async t => {
+  const root = await temporary(t); const m = fake(root);
+  const runner = async (command, args) => args[0] === 'plugin' ? '[]' : m.runner(command, args);
+  const result = await setup(root, { checkOnly: true }, runner);
+  assert.equal(result.ok, true);
+  assert.equal(result.invitationPlugin.status, 'not-installed');
+  assert.match(result.invitationPlugin.message, /una sola volta/);
+  assert.equal(result.invitationPlugin.command, 'node scripts/collab.mjs plugin-install');
+  await assert.rejects(access(join(root, '.paseo-local.json')));
+});
+
+test('setup detects ready, disabled and unavailable plugin catalogs without mutation', async t => {
+  const root = await temporary(t); const m = fake(root);
+  for (const [catalog, expected] of [
+    [[{ id: 'paseo-collaborativo', status: 'running', enabled: true }], 'ready'],
+    [[{ id: 'paseo-collaborativo', status: 'disabled', enabled: false }], 'needs-attention'],
+    [null, 'unknown'],
+  ]) {
+    const runner = async (command, args) => {
+      if (args[0] === 'plugin') {
+        assert.deepEqual(args, ['plugin', 'ls', '--json']);
+        if (catalog === null) throw new Error('daemon offline');
+        return JSON.stringify(catalog);
+      }
+      return m.runner(command, args);
+    };
+    const result = await setup(root, { checkOnly: true }, runner);
+    assert.equal(result.invitationPlugin.status, expected);
+    assert.equal(result.ok, true);
+  }
+});
