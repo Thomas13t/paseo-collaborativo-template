@@ -24,7 +24,7 @@ La procedura completa è in [CREA-PROGETTO.md](CREA-PROGETTO.md). Il template no
 
 Il plugin incluso aggiunge **Invita al progetto**, con icona UserPlus, nella testata dei workspace collaborativi e al loro menu comandi. Il repository viene riconosciuto automaticamente dal progetto aperto; non devi scriverlo a mano. Controlli destinatario, repository e accesso; poi premi **Invia invito**. Le notifiche vengono gestite da GitHub. Dopo l’accettazione il collaboratore trova qui il file INIZIA-QUI.md.
 
-Il campo accetta username o email pubblica. Se GitHub non espone l’email, serve lo username: non è possibile invitare una qualsiasi email tramite l’API dei collaboratori di repository personali. L’email di notifica effettiva è quella scelta nelle impostazioni GitHub del destinatario. Non viene spedito un messaggio personalizzato dal tuo account email.
+Il campo accetta username, link diretto al profilo GitHub o email pubblica. Se GitHub non espone l’email, serve lo username: non è possibile invitare una qualsiasi email tramite l’API dei collaboratori di repository personali. L’email di notifica effettiva è quella scelta nelle impostazioni GitHub del destinatario. Non viene spedito un messaggio personalizzato dal tuo account email.
 
 [Configurazione del pulsante](docs/plugin.md). Il plugin è facoltativo; il progetto funziona anche senza.
 

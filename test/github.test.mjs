@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { repoFromRemote, validateRepo, resolveRecipient, prepareInvite, sendInvite } from '../integrations/paseo-collaborativo/server/github.mjs';
+import { repoFromRemote, validateRepo, normalizeRecipient, resolveRecipient, prepareInvite, sendInvite } from '../integrations/paseo-collaborativo/server/github.mjs';
 import { createTicketStore } from '../integrations/paseo-collaborativo/server/tickets.mjs';
 
 const info = { id: 123, full_name: 'owner/project', default_branch: 'main', is_template: false, permissions: { admin: true } };
@@ -88,4 +88,22 @@ test('preview tickets expire, are consumed once, and clear on plugin shutdown', 
   const id = store.issue(plan); assert.equal(store.consume(id), plan); assert.throws(() => store.consume(id));
   const expired = store.issue(plan); clock = 11; assert.throws(() => store.consume(expired));
   const cleared = store.issue(plan); store.clear(); assert.throws(() => store.consume(cleared));
+});
+
+
+test('recipient accepts username, @username and direct GitHub profile links', async () => {
+  const m = mock({ 'users/b1162': { login: 'b1162', type: 'User', name: null } });
+  for (const value of ['b1162', '@b1162', 'https://github.com/b1162', 'https://github.com/b1162/', ' github.com/b1162 ']) {
+    assert.equal(normalizeRecipient(value), 'b1162');
+    assert.equal((await resolveRecipient(value, m.runner)).login, 'b1162');
+  }
+  assert.equal(writes(m.calls).length, 0);
+});
+
+test('recipient refuses repository links, external hosts and embedded credentials before lookup', async () => {
+  const m = mock();
+  for (const value of ['https://github.com/b1162/repo', 'https://github.com.evil.test/b1162', 'https://secret@github.com/b1162', 'https://github.com/b1162?token=secret', 'https://github.com/b1162#fragment', 'http://github.com/b1162', 'https://github.com/bad--name', 'https://github.com/b1162/../other/repo']) {
+    await assert.rejects(resolveRecipient(value, m.runner));
+  }
+  assert.equal(m.calls.length, 0);
 });
