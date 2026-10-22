@@ -1,0 +1,6 @@
+{
+  "id": "paseo-collaborativo",
+  "name": "Invita al progetto",
+  "description": "Inviti GitHub con anteprima del destinatario e istruzioni per partecipare dal proprio Paseo.",
+  "requirements": { "paseo": ">=0.12.0 <0.13.0" }
+}

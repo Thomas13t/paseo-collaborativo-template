@@ -1,0 +1,11 @@
+{
+  "worktree": {
+    "setup": "node scripts/collab.mjs setup --check-only"
+  },
+  "scripts": {
+    "Prepara questa copia": { "command": "node scripts/collab.mjs setup --register" },
+    "Leggi aggiornamenti del team": { "command": "node scripts/collab.mjs context" },
+    "Verifica ambiente": { "command": "node scripts/collab.mjs doctor" },
+    "Test del template": { "command": "npm test" }
+  }
+}

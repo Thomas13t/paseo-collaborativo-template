@@ -1,0 +1,13 @@
+{
+  "name": "paseo-collaborativo-template",
+  "version": "0.1.0-alpha.1",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "doctor": "node scripts/collab.mjs doctor",
+    "setup": "node scripts/collab.mjs setup --register",
+    "context": "node scripts/collab.mjs context"
+  }
+}
