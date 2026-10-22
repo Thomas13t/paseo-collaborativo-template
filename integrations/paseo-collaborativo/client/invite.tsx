@@ -71,4 +71,3 @@ export function InvitePanel({ theme, layout, workspaceId }: PluginWorkspacePanel
   const name = useWorkspace(workspaceId, workspace => workspace.name);
   return <InviteForm key={workspaceId} theme={theme} compact={layout.compact} workspaceId={workspaceId} workspaceName={name ?? undefined} />;
 }
-
