@@ -30,12 +30,16 @@ Il campo accetta username, link diretto al profilo GitHub o email pubblica. Se G
 
 ## Come lavoriamo
 
-- Prima di iniziare: aggiorniamo il contesto da GitHub e leggiamo le decisioni condivise.
+- Prima di iniziare: aggiorniamo il contesto da GitHub e leggiamo [lo stato del progetto](STATO-PROGETTO.md), gli incarichi e le decisioni condivise.
 - Lavoriamo su branch distinti e rendiamo visibili gli avanzamenti con push e pull request.
-- Le decisioni utili entrano nei documenti del progetto, non rimangono soltanto nelle chat.
+- Ogni incarico sostanziale ha un obiettivo, un responsabile, un perimetro e un criterio di completamento nell'issue; evitiamo filoni sovrapposti non concordati.
+- Ipotesi, proposte e approvazioni restano distinte nel [registro decisioni](docs/decisioni.md). Rispettiamo i passaggi di fase e le pause indicati dall'utente.
+- Fonti e deliverable, inclusi PDF e sorgenti, sono nell'[indice materiali](docs/materiali.md): un file rimasto sul computer di una persona non è ancora condiviso.
 - Ognuno conserva i propri account, credenziali, conversazioni e preferenze dei modelli.
 
-Le regole comuni sono in [AGENTS.md](AGENTS.md), il contenuto da personalizzare in [docs/progetto.md](docs/progetto.md).
+Le regole comuni sono in [AGENTS.md](AGENTS.md) e la procedura in [docs/collaborazione.md](docs/collaborazione.md). Alla creazione compila [docs/progetto.md](docs/progetto.md) e lo stato con l'incarico ricevuto: il template non presume una metodologia o una fase specifica.
+
+Sono convenzioni condivise per persone e agenti, non un blocco tecnico che impedisce a un modello di andare oltre il proprio incarico. In caso di informazioni mancanti, il riepilogo deve dichiarare l'incertezza.
 
 ## Requisiti e limiti dell’alfa
 
