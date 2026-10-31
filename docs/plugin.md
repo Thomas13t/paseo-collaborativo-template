@@ -2,7 +2,7 @@
 
 Il plugin aggiunge **Invita**, con icona UserPlus, direttamente nella testata di ogni workspace che contiene il setup collaborativo (`INIZIA-QUI.md` e `scripts/collab.mjs`). Il pannello riconosce il progetto e legge il repository GitHub da `origin`: non c’è un campo proprietario/repository da compilare. Su finestre strette il pulsante è nel menu del workspace (`···`). Il pannello è disponibile anche nell’Explorer e dal menu comandi del workspace.
 
-La versione alfa supporta Paseo 0.12.x. La voce globale nella sidebar è stata rimossa per evitare inviti scollegati dal progetto corrente.
+La versione alfa supporta Paseo 0.14.x. La voce globale nella sidebar è stata rimossa per evitare inviti scollegati dal progetto corrente.
 
 ## Prima apertura: il promemoria
 

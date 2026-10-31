@@ -43,7 +43,7 @@ Sono convenzioni condivise per persone e agenti, non un blocco tecnico che imped
 
 ## Requisiti e limiti dell’alfa
 
-Node.js 20+, Git, GitHub CLI autenticata e Paseo 0.12.x per il plugin. Per il solo template servono i comandi project/workspace/script della CLI Paseo. Su macOS viene riconosciuta anche la CLI inclusa in `/Applications/Paseo.app`; altrove usa `paseo` nel PATH o `PASEO_BIN`.
+Node.js 20+, Git, GitHub CLI autenticata e Paseo 0.14.x per il plugin. Per il solo template servono i comandi project/workspace/script della CLI Paseo. Su macOS viene riconosciuta anche la CLI inclusa in `/Applications/Paseo.app`; altrove usa `paseo` nel PATH o `PASEO_BIN`.
 
 La preparazione è un comando esplicito, non codice eseguito automaticamente dal clone. Il setup dei nuovi worktree esegue solo i controlli. Non installiamo provider, non modifichiamo le impostazioni globali degli agenti e non abilitiamo automaticamente i plugin.
 
