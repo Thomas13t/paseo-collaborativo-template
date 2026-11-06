@@ -1,58 +1,58 @@
-# Paseo collaborativo · alfa
+# Paseo Collaborative Template · Alpha
 
-Una base per creare progetti condivisi: repository e conoscenza comuni, copia locale e agenti personali per ogni collaboratore.
+A starting point for shared projects: a common repository and shared knowledge, with a local copy and personal agents for each collaborator.
 
-**Se sei stato invitato a questo progetto, parti da [INIZIA-QUI.md](INIZIA-QUI.md).**
+**Invited to a project? Start with [INIZIA-QUI.md](INIZIA-QUI.md).** The linked guides are currently in Italian.
 
-## Prima apertura in Paseo: controlla il plugin
+## First time in Paseo: check the plugin
 
-**Per avere il pulsante Invita, devi installare il plugin sul tuo Paseo. Serve una sola installazione per computer/daemon, anche se partecipi a più progetti.** Il clone o il pull del repository non installa né aggiorna il plugin.
+**To use the Invite button, install the plugin on your Paseo daemon.** One installation per computer/daemon is enough, even if you participate in several projects. Cloning or pulling the repository does not install or update the plugin.
 
-Esegui `node scripts/collab.mjs setup --register`: l’output `invitationPlugin` dice se il pulsante è pronto o mostra il promemoria di installazione. Il tuo agente deve riportartelo. È un avviso nel setup, non una notifica push nativa al semplice clone.
+Run `node scripts/collab.mjs setup --register`. The `invitationPlugin` output reports whether the button is ready or shows an installation reminder; your agent should report the message to you. This is a setup notice, not a native push notification triggered by cloning.
 
-Se manca, segui [la guida di installazione](docs/plugin.md). Dopo il consenso e l’abilitazione dei plugin, esegui `node scripts/collab.mjs plugin-install`. Se è già attivo, non reinstallarlo. Puoi lavorare sul repository anche senza il pulsante.
+If the plugin is missing, follow the [installation guide](docs/plugin.md). After consenting to and enabling plugins, run `node scripts/collab.mjs plugin-install`. If it is already active, there is no need to reinstall it. You can work on the repository without the button.
 
-## Crea Sdrubale
+## Create a project
 
-Al tuo agente in Paseo puoi dire:
+For example, tell your Paseo agent:
 
-> Usa il template Thomas13t/paseo-collaborativo-template per creare un progetto privato chiamato Sdrubale sul mio account GitHub. Leggi la sua procedura CREA-PROGETTO.md, prepara la copia locale e registrala nel mio Paseo. Poi aspetta il materiale iniziale. Non invitare persone senza che io scelga il destinatario.
+> Use the Thomas13t/paseo-collaborativo-template template to create a private project called Sdrubale on my GitHub account. Read its CREA-PROGETTO.md procedure, prepare the local copy, and register it in my Paseo. Then wait for the initial material. Do not invite anyone until I choose the recipient.
 
-La procedura completa è in [CREA-PROGETTO.md](CREA-PROGETTO.md). Il template non obbliga a scegliere framework o linguaggi: il progetto può contenere software, documenti, ricerche o altri materiali.
+The complete procedure is in [CREA-PROGETTO.md](CREA-PROGETTO.md). The template does not require a particular framework or language: projects can contain software, documents, research, or other materials.
 
-## Invita una persona
+## Invite someone
 
-Il plugin incluso aggiunge **Invita al progetto**, con icona UserPlus, nella testata dei workspace collaborativi e al loro menu comandi. Il repository viene riconosciuto automaticamente dal progetto aperto; non devi scriverlo a mano. Controlli destinatario, repository e accesso; poi premi **Invia invito**. Le notifiche vengono gestite da GitHub. Dopo l’accettazione il collaboratore trova qui il file INIZIA-QUI.md.
+The included plugin adds **Invita al progetto** (Invite to project), with a UserPlus icon, to the header and command menu of collaborative workspaces. It detects the repository from the open project, so you do not have to enter it manually. Check the recipient, repository, and access, then press **Invia invito** (Send invitation). GitHub handles notifications. After accepting, the collaborator can start with INIZIA-QUI.md.
 
-Il campo accetta username, link diretto al profilo GitHub o email pubblica. Se GitHub non espone l’email, serve lo username: non è possibile invitare una qualsiasi email tramite l’API dei collaboratori di repository personali. L’email di notifica effettiva è quella scelta nelle impostazioni GitHub del destinatario. Non viene spedito un messaggio personalizzato dal tuo account email.
+The recipient field accepts a username, a direct GitHub profile link, or a public email address. If GitHub does not expose the email, use the username: the personal-repository collaborators API cannot invite an arbitrary email address. The actual notification address depends on the recipient's GitHub settings. The plugin does not send a personalized message from your email account.
 
-[Configurazione del pulsante](docs/plugin.md). Il plugin è facoltativo; il progetto funziona anche senza.
+See the [button setup guide](docs/plugin.md). The plugin is optional; the project works without it.
 
-## Come lavoriamo
+## How we work
 
-- Prima di iniziare: aggiorniamo il contesto da GitHub e leggiamo [lo stato del progetto](STATO-PROGETTO.md), gli incarichi e le decisioni condivise.
-- Lavoriamo su branch distinti e rendiamo visibili gli avanzamenti con push e pull request.
-- Ogni incarico sostanziale ha un obiettivo, un responsabile, un perimetro e un criterio di completamento nell'issue; evitiamo filoni sovrapposti non concordati.
-- Ipotesi, proposte e approvazioni restano distinte nel [registro decisioni](docs/decisioni.md). Rispettiamo i passaggi di fase e le pause indicati dall'utente.
-- Fonti e deliverable, inclusi PDF e sorgenti, sono nell'[indice materiali](docs/materiali.md): un file rimasto sul computer di una persona non è ancora condiviso.
-- Ognuno conserva i propri account, credenziali, conversazioni e preferenze dei modelli.
+- Before starting, refresh the GitHub context and read the [project status](STATO-PROGETTO.md), assignments, and shared decisions.
+- Work on separate branches and share progress through pushes and pull requests.
+- Each substantial assignment has an objective, an owner, a scope, and completion criteria in its issue; avoid overlapping work unless agreed.
+- Keep assumptions, proposals, and approvals distinct in the [decision register](docs/decisioni.md). Respect the user's phase boundaries and pauses.
+- Record sources and deliverables, including PDFs and source files, in the [materials index](docs/materiali.md). A file that exists only on one person's computer is not yet shared.
+- Each collaborator keeps their own accounts, credentials, conversations, and model preferences.
 
-Le regole comuni sono in [AGENTS.md](AGENTS.md) e la procedura in [docs/collaborazione.md](docs/collaborazione.md). Alla creazione compila [docs/progetto.md](docs/progetto.md) e lo stato con l'incarico ricevuto: il template non presume una metodologia o una fase specifica.
+Shared rules are in [AGENTS.md](AGENTS.md), and the workflow is in [docs/collaborazione.md](docs/collaborazione.md). When creating a project, fill in [docs/progetto.md](docs/progetto.md) and the project status using the actual assignment: the template does not assume a particular methodology or phase.
 
-Sono convenzioni condivise per persone e agenti, non un blocco tecnico che impedisce a un modello di andare oltre il proprio incarico. In caso di informazioni mancanti, il riepilogo deve dichiarare l'incertezza.
+These are shared conventions for people and agents, not a technical restriction on what a model can do. Summaries should identify missing information and uncertainty.
 
-## Requisiti e limiti dell’alfa
+## Requirements and alpha limitations
 
-Node.js 20+, Git, GitHub CLI autenticata e Paseo 0.14.x per il plugin. Per il solo template servono i comandi project/workspace/script della CLI Paseo. Su macOS viene riconosciuta anche la CLI inclusa in `/Applications/Paseo.app`; altrove usa `paseo` nel PATH o `PASEO_BIN`.
+Node.js 20+, Git, an authenticated GitHub CLI, and Paseo 0.15.x for the plugin. The plugin's declared range is `>=0.15.0 <0.16.0`; it has been type-checked against the 0.15.0 SDK. Paseo 0.15.2 is the latest stable release checked on 6 November 2026. A live UI and invitation test is still needed to confirm runtime behavior. The template itself uses the Paseo CLI's project, workspace, and script commands. On macOS it also detects the CLI bundled in `/Applications/Paseo.app`; elsewhere use `paseo` on the PATH or set `PASEO_BIN`.
 
-La preparazione è un comando esplicito, non codice eseguito automaticamente dal clone. Il setup dei nuovi worktree esegue solo i controlli. Non installiamo provider, non modifichiamo le impostazioni globali degli agenti e non abilitiamo automaticamente i plugin.
+Preparation is an explicit command, not code run automatically on clone. New worktree setup runs checks only. The template does not install providers, change global agent settings, or enable plugins automatically.
 
-Il template copia i file, non i permessi o le protezioni GitHub: la procedura `configure` applica le impostazioni e può richiedere la protezione del branch principale. Se il piano GitHub non la consente, viene riportato esplicitamente. Le istruzioni agli agenti sono una convenzione di lavoro; non sostituiscono autorizzazioni e controlli GitHub.
+The template copies files, not GitHub permissions or protections. The `configure` procedure applies repository settings and can request default-branch protection; if the GitHub plan does not allow it, this is reported explicitly. Agent instructions are working conventions, not a substitute for GitHub permissions and controls.
 
-Gli aggiornamenti futuri del template non si propagano automaticamente ai progetti già creati. Prima di usare una nuova versione, rivedere le modifiche.
+Future template updates do not automatically propagate to existing projects. Review changes before adopting a new version.
 
-## Verifica
+## Verification
 
-`npm test` esegue test locali senza inviare inviti né creare repository. Per il plugin: `npm ci --ignore-scripts` e `npm run typecheck` nella sua cartella.
+`npm test` runs local tests without sending invitations or creating repositories. For the plugin, run `npm ci --ignore-scripts` and `npm run typecheck` in its directory.
 
-Versione: **0.1.0-alpha.1**. Il runtime del plugin richiede l’abilitazione esplicita dei plugin sul daemon dell’utente.
+Template version: **0.1.0-alpha.1**. Running the plugin requires explicitly enabling plugins on the user's daemon.

@@ -13,7 +13,7 @@
 
 I test automatici usano servizi GitHub e Paseo simulati. Coprono accessi, email ambigue/private, inviti duplicati, cambi account/repository, scadenza delle anteprime e preparazione ripetuta senza duplicati. Nessun invito reale viene inviato dai test.
 
-La verifica TypeScript usa il pacchetto SDK Paseo 0.14.0. L’installazione e la verifica visiva del plugin sono separate: richiedono l’abilitazione esplicita dei plugin sul daemon. Prima di chiamare l’alfa operativa, provare il pannello su desktop/compatto e tema chiaro/scuro, poi un invito a un destinatario scelto dall’utente.
+La verifica TypeScript usa il pacchetto SDK Paseo 0.15.0. L’installazione e la verifica visiva del plugin sono separate: richiedono l’abilitazione esplicita dei plugin sul daemon. Prima di chiamare l’alfa operativa, provare il pannello su desktop/compatto e tema chiaro/scuro, poi un invito a un destinatario scelto dall’utente.
 
 ## Limiti
 
@@ -22,6 +22,6 @@ La verifica TypeScript usa il pacchetto SDK Paseo 0.14.0. L’installazione e la
 - Le protezioni del branch dipendono da piano e permessi GitHub; un template di file non le trasferisce automaticamente.
 - Le istruzioni comuni non dimostrano da sole che ogni runtime le carichi automaticamente. INIZIA-QUI.md richiede all’agente di leggerle esplicitamente.
 - I progetti già creati non ricevono automaticamente le nuove versioni del template.
-- Le dipendenze di sviluppo React Native richieste dal SDK 0.14 includono avvisi npm audit transitivi relativi a braces/micromatch. Non viene usato Metro né codice React Native da questo pacchetto nel daemon: Paseo fornisce i moduli del client. Non è stato applicato un aggiornamento forzato incompatibile con i peer del SDK. Prima di aggiornare il SDK ricontrollare l’audit e la compatibilità.
+- Con il lockfile SDK 0.15.0, `npm ci --ignore-scripts` il 6 novembre 2026 ha riportato zero vulnerabilità note. Rivalutare audit e compatibilità ai prossimi aggiornamenti.
 
 Nessuna credenziale o cronologia personale deve essere aggiunta al template.
