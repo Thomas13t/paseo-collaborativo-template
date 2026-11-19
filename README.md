@@ -43,7 +43,7 @@ These are shared conventions for people and agents, not a technical restriction 
 
 ## Requirements and alpha limitations
 
-Node.js 20+, Git, an authenticated GitHub CLI, and Paseo 0.15.x for the plugin. The plugin's declared range is `>=0.15.0 <0.16.0`; it has been type-checked against the 0.15.0 SDK. Paseo 0.15.2 is the latest stable release checked on 6 November 2026. A live UI and invitation test is still needed to confirm runtime behavior. The template itself uses the Paseo CLI's project, workspace, and script commands. On macOS it also detects the CLI bundled in `/Applications/Paseo.app`; elsewhere use `paseo` on the PATH or set `PASEO_BIN`.
+Node.js 20+, Git, an authenticated GitHub CLI, and Paseo 0.16.x for the plugin. The plugin's declared range is `>=0.16.0 <0.17.0`; it has been type-checked against the 0.16.1 SDK. A live UI and invitation test is still needed to confirm runtime behavior. The template itself uses the Paseo CLI's project, workspace, and script commands. On macOS it also detects the CLI bundled in `/Applications/Paseo.app`; elsewhere use `paseo` on the PATH or set `PASEO_BIN`.
 
 Preparation is an explicit command, not code run automatically on clone. New worktree setup runs checks only. The template does not install providers, change global agent settings, or enable plugins automatically.
 
